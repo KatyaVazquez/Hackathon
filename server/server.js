@@ -3,7 +3,7 @@ dotenv.config() */
 const express = require("express");
 const app = express();
 const route = require( "./routes/user.routes.js");
-//import './server/config/mongodb.js' */
+require('./config/mongosee.config')
 const cors = require("cors");
 
 

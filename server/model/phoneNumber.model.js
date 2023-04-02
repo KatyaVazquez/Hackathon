@@ -1,15 +1,11 @@
-import { Schema, model } from "mongoose";
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const phoneUser = new Schema({
-    idUser:{type:String},
-    name: {
+const phoneNumber = new mongoose.Schema({
+    number: {
         type: String,
     },
-    phoneNumber:{
-        type:Number
-    }
-}, {
-    timestamps: true
-  });
+}, { timestamps: true });
 
-export const userPhone = model('phoneNumber', phoneUser)
+
+module.exports.numbers = mongoose.model('phoneNumber', phoneNumber);

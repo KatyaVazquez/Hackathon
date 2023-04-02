@@ -1,9 +1,10 @@
-const { userPhone } = require("../model/phoneNumber.model");
+const { numbers } = require("../model/phoneNumber.model");
 
 
 module.exports.guardarPhoneNumber = async (request, response) => {
+    console.log(request.body)
     try {
-        const res = await userPhone.create(request.body);
+        const res = await numbers.create(request.body);
         response.json(res);
     } catch (error) {
         response.status(400);
@@ -11,9 +12,9 @@ module.exports.guardarPhoneNumber = async (request, response) => {
     }
 }
 
-module.exports.getAlluserPhone = async (request, response) => {
+module.exports.getAllnumbers = async (request, response) => {
     try {
-        const res = await userPhone.find({}).sort({ nombre: 1 })
+        const res = await numbers.find({})
         response.json(res);
     } catch (error) {
         response.status(400);
@@ -21,9 +22,9 @@ module.exports.getAlluserPhone = async (request, response) => {
     }
 }
 
-module.exports.getuserPhone = async (request, response) => {
+module.exports.getnumbers = async (request, response) => {
     try {
-        const res = await userPhone.findOne({ _id: request.params.id })
+        const res = await numbers.findOne({ _id: request.params.id })
         response.json(res);
     } catch (error) {
         response.status(400);
@@ -31,9 +32,9 @@ module.exports.getuserPhone = async (request, response) => {
     }
 }
 
-module.exports.updateuserPhone = async (request, response) => {
+module.exports.updatenumbers = async (request, response) => {
     try {
-        const res = await userPhone.findOneAndUpdate({ _id: request.params.id }, request.body, { new: true, runValidators: true })
+        const res = await numbers.findOneAndUpdate({ _id: request.params.id }, request.body, { new: true, runValidators: true })
         response.json(res);
     } catch (error) {
         response.status(400);
@@ -41,9 +42,9 @@ module.exports.updateuserPhone = async (request, response) => {
     }
 }
 
-module.exports.deleteuserPhone = async (request, response) => {
+module.exports.deletenumbers = async (request, response) => {
     try {
-        const res = await userPhone.deleteOne({ _id: request.params.id })
+        const res = await numbers.deleteOne({ _id: request.params.id })
         response.json(res);
     } catch (error) {
         response.status(400);

@@ -33,13 +33,20 @@ function Formulario() {
       `http://localhost:8000/post`,{number: numero}
   );
   console.log(res)
-  }
+}
+const registrarNumero=async(numero)=>{
+  const res = await axios.post(
+    `http://localhost:8000/postNumber`,{number: numero}
+);
+console.log(res)
+}  
   const handleSubmit = (event) => {
     event.preventDefault();
     // Aquí puedes hacer algo con los datos del formulario,
     // como enviar una petición a un servidor
     console.log(phoneNumber, isChecked);
-    enviarMensaje(phoneNumber)
+    registrarNumero(phoneNumber)
+    //enviarMensaje(phoneNumber)
   };
 
   const handlePhoneChange = (event) => {
@@ -53,6 +60,7 @@ function Formulario() {
   return (
     <div className='container'>
       <form onSubmit={handleSubmit}>
+      <div className='contForm'>
       <div className='item flexs'>
       <label>
         Telefono:
@@ -67,6 +75,7 @@ function Formulario() {
       </div>
       <div className='item botones'>
       <button type="submit">Enviar</button>
+      </div>
       </div>
     </form>
     </div>
